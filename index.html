@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Canfield Construction</title>
+<meta name="description" content="Canfield Construction. Concrete driveways, patios, shop slabs, RV pads and curb and gutter, poured by a crew that has been at it since 1999. Free estimates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout concept: sun-bleached jobsite editorial. The arc from the Canfield logo becomes arched windows for photos and video; the page is light like cured concrete, with sky blue from the crew's float handles and caution-tape yellow for every call to action. */
+:root{
+  color-scheme:light;
+  --slab:#e9e7e1;      /* cured concrete */
+  --slab-2:#dcd9d0;
+  --paper:#f6f5f1;
+  --wet:#a59a84;       /* fresh pour */
+  --wet-2:#8c826d;
+  --ink:#15171a;       /* asphalt */
+  --ink-2:#575a5e;
+  --sky:#1c74c9;       /* bull float blue */
+  --sky-2:#0f4f93;
+  --tape:#f6c416;      /* caution tape */
+  --tape-2:#e0ad00;
+  --line:rgba(21,23,26,.14);
+  --line-w:rgba(255,255,255,.16);
+  --display:"Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;
+  --body:"Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;
+  --wrap:1220px;
+  --gut:clamp(18px,4vw,48px);
+  --ease:cubic-bezier(.2,.75,.2,1);
+  --spring:cubic-bezier(.34,1.45,.5,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px;overflow-x:clip}
+body{margin:0;background:var(--slab);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img,video,svg,canvas{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4,p{margin:0}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.02;letter-spacing:-.035em;text-wrap:balance}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:8px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
+.sec{padding-block:clamp(72px,10vw,140px);position:relative}
+.h2{font-size:clamp(32px,4.8vw,66px);max-width:18ch}
+.h2 em{font-style:normal;color:var(--sky)}
+.lede{font-size:clamp(17px,1.5vw,20px);max-width:56ch;color:var(--ink-2);margin-top:22px}
+.tag{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;margin-bottom:18px}
+.tag::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--tape);box-shadow:0 0 0 4px rgba(246,196,22,.3)}
+.dark{background:var(--ink);color:var(--paper)}
+.dark .lede{color:#b4b7ba}
+
+/* reveal helpers (content is visible unless JS marks it below the fold) */
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:.06em 0 .12em;margin:-.06em 0 -.12em}
+.w>i{display:inline-block;font-style:inherit;transition:transform .95s var(--ease);transition-delay:calc(var(--i)*40ms)}
+.split.pre .w>i{transform:translateY(112%) rotate(4deg)}
+.fade{transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0ms)}
+.fade.pre{opacity:0;transform:translateY(30px)}
+.screed{position:relative;overflow:hidden}
+.screed>img,.screed>video{transition:clip-path 1.2s var(--ease),transform 1.6s var(--ease);clip-path:inset(0 0 0 0)}
+.screed.pre>img,.screed.pre>video{clip-path:inset(0 100% 0 0);transform:scale(1.12)}
+
+/* buttons */
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:58px;padding:0 28px;border:0;border-radius:999px;cursor:pointer;text-decoration:none;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em;transition:transform .3s var(--spring),box-shadow .3s var(--ease),background .25s,color .25s}
+.btn i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--tape);margin-right:-14px;transition:transform .45s var(--spring)}
+.btn i svg{width:16px;height:16px}
+.btn:hover i{transform:rotate(-45deg) scale(1.08)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:var(--ink);transform:translateY(101%);transition:transform .45s var(--ease)}
+.btn-y{background:var(--tape);color:var(--ink);box-shadow:0 12px 30px -14px rgba(224,173,0,.9)}
+.btn-y:hover{color:var(--tape);transform:translateY(-3px)}
+.btn-y:hover::before{transform:none}
+.btn-y:hover i{background:var(--tape);color:var(--ink)}
+.btn-o{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+.btn-o:hover{transform:translateY(-3px);background:var(--ink);color:var(--paper);box-shadow:none}
+.dark .btn-o:hover,.blue .btn-o:hover{background:var(--paper);color:var(--ink)}
+.btn:active{transform:scale(.97)}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.rip{position:absolute;z-index:-1;pointer-events:none;width:20px;height:20px;border-radius:50%;transform:translate(-50%,-50%) scale(0);background:rgba(255,255,255,.55);animation:rip .6s ease forwards}
+@keyframes rip{to{transform:translate(-50%,-50%) scale(12);opacity:0}}
+
+/* header */
+.top{position:fixed;left:0;right:0;top:0;z-index:80;padding-top:calc(env(safe-area-inset-top,0px) + 12px);pointer-events:none}
+.top .in{pointer-events:auto;max-width:calc(var(--wrap) - 2*var(--gut) + 28px);margin-inline:auto;width:calc(100% - 2*var(--gut) + 28px);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 8px 8px 20px;border-radius:999px;background:rgba(246,245,241,.78);backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 0 0 1px var(--line),0 20px 40px -24px rgba(21,23,26,.35);transition:transform .5s var(--ease)}
+.top.hide .in{transform:translateY(-140%)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo img{height:46px;width:auto}
+.nav{display:flex;gap:2px}
+.nav a{text-decoration:none;font-weight:600;font-size:15px;padding:10px 16px;border-radius:999px;transition:background .25s,color .25s}
+.nav a:hover{background:var(--ink);color:var(--paper)}
+.top .btn{min-height:48px;padding:0 22px;font-size:15.5px}
+.top-num{font-family:var(--display);font-weight:700;font-size:17px;text-decoration:none;white-space:nowrap;padding-inline:8px}
+.top-r{display:flex;align-items:center;gap:8px}
+@media(max-width:1000px){.nav{display:none}}
+@media(max-width:560px){.top-num{display:none}.logo img{height:40px}}
+
+/* hero */
+.hero{position:relative;padding-top:clamp(120px,14vw,170px);padding-bottom:clamp(40px,6vw,80px);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(24px,4vw,64px);align-items:center}
+.sun{position:absolute;right:-12vw;top:-18vw;width:70vw;height:70vw;max-width:980px;max-height:980px;border-radius:50%;background:radial-gradient(circle,rgba(246,196,22,.38),rgba(246,196,22,0) 62%);pointer-events:none;animation:sun 9s ease-in-out infinite}
+@keyframes sun{50%{transform:scale(1.08) translateY(14px);opacity:.75}}
+.hero h1{font-size:clamp(42px,6.4vw,98px);font-weight:800;line-height:.96;letter-spacing:-.05em}
+.hero h1 .ln{display:block;overflow:hidden;padding:.05em 0 .1em;margin:-.05em 0 -.1em}
+.hero h1 .ln>span{display:block;animation:lineUp 1.15s var(--ease) both}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.12s}
+.hero h1 .ln:nth-child(3)>span{animation-delay:.24s}
+.hero h1 .ln:nth-child(4)>span{animation-delay:.36s}
+.hero h1 .sk{color:var(--sky)}
+@keyframes lineUp{from{transform:translateY(112%) rotate(4deg)}to{transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.hero-sub{font-size:clamp(17px,1.6vw,21px);max-width:48ch;color:var(--ink-2);margin-top:28px;animation:rise .9s var(--ease) .6s both}
+.hero .btn-row{margin-top:30px;animation:rise .9s var(--ease) .75s both}
+.assure{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;list-style:none;padding:0;font-weight:600;font-size:15px;animation:rise .9s var(--ease) .9s both}
+.assure li{display:flex;align-items:center;gap:8px}
+.assure svg{width:20px;height:20px;color:var(--sky)}
+.arches{position:relative;aspect-ratio:1/1.12;animation:rise 1.2s var(--ease) .3s both}
+.arch{position:absolute;overflow:hidden;border-radius:999px 999px 26px 26px;background:var(--slab-2);box-shadow:0 40px 70px -40px rgba(21,23,26,.6);will-change:transform}
+.arch video,.arch img{width:100%;height:100%;object-fit:cover}
+.arch.a{left:14%;top:0;width:62%;height:92%}
+.arch.b{left:0;bottom:0;width:36%;height:44%;border-radius:999px 999px 20px 20px;box-shadow:0 0 0 8px var(--slab),0 30px 50px -30px rgba(21,23,26,.6)}
+.arch.c{right:0;top:22%;width:32%;height:40%;border-radius:999px 999px 20px 20px;box-shadow:0 0 0 8px var(--slab),0 30px 50px -30px rgba(21,23,26,.6)}
+.seal{position:absolute;right:4%;bottom:2%;width:clamp(110px,13vw,160px);aspect-ratio:1;border-radius:50%;background:var(--tape);display:grid;place-items:center;box-shadow:0 20px 40px -18px rgba(21,23,26,.6)}
+.seal svg{position:absolute;inset:6%;animation:spin 16s linear infinite}
+.seal b{font-family:var(--display);font-weight:800;font-size:clamp(26px,3vw,38px);letter-spacing:-.04em;line-height:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}.arches{max-width:520px;margin-inline:auto;width:100%}}
+
+/* ticker */
+.tick{overflow:hidden;border-block:1.5px solid var(--ink);padding-block:16px;background:var(--paper)}
+.tick div{display:flex;width:max-content;animation:tick 40s linear infinite}
+.tick span{display:flex;align-items:center;gap:30px;padding-right:30px;font-family:var(--display);font-weight:700;font-size:clamp(22px,3vw,40px);letter-spacing:-.03em;white-space:nowrap}
+.tick span:nth-child(even){color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.tick span::after{content:"";width:.5em;height:.26em;border:3px solid var(--sky);border-bottom:0;border-radius:99px 99px 0 0}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* problem: time machine */
+.tm{margin-top:clamp(36px,5vw,64px);background:var(--ink);color:var(--paper);border-radius:36px;padding:clamp(20px,3.6vw,48px);position:relative;overflow:hidden}
+.tm-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2.4vw,32px)}
+.pad{min-width:0}
+.pad h3{font-size:clamp(20px,2.3vw,30px);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.pad h3 small{font-family:var(--body);font-size:12.5px;font-weight:700;letter-spacing:.04em;padding:5px 10px;border-radius:99px;background:#3a2b2b;color:#ffb1a1}
+.pad.good h3 small{background:#17344f;color:#9fd0ff}
+.pad svg{width:100%;height:auto;border-radius:20px}
+.pad ul{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:8px;font-size:15.5px;color:#c9cbcd}
+.pad li{display:flex;gap:10px;align-items:flex-start}
+.pad li::before{content:"";flex:none;width:18px;height:18px;margin-top:3px;border-radius:50%;background:#5a2e2a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffb1a1' stroke-width='3.4'%3E%3Cpath d='M7 7l10 10M17 7L7 17'/%3E%3C/svg%3E") center/11px no-repeat}
+.pad.good li::before{background:#17456f url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239fd0ff' stroke-width='3.4'%3E%3Cpath d='M5 12.5l5 5L19 7'/%3E%3C/svg%3E") center/12px no-repeat}
+.crack{fill:none;stroke:#1b1612;stroke-linecap:round;stroke-linejoin:round}
+.dial{margin-top:clamp(22px,3vw,36px);display:grid;grid-template-columns:auto 1fr;gap:clamp(16px,3vw,40px);align-items:center;border-top:1px solid var(--line-w);padding-top:clamp(20px,3vw,32px)}
+.yr{font-family:var(--display);font-weight:800;font-size:clamp(48px,6.6vw,92px);line-height:.85;letter-spacing:-.05em;font-variant-numeric:tabular-nums;min-width:3.4ch}
+.yr small{display:block;font-family:var(--body);font-size:14px;font-weight:600;letter-spacing:0;color:#9da0a3;margin-bottom:8px}
+.dial p{font-size:clamp(17px,1.7vw,21px);min-height:3.2em;max-width:54ch}
+.dial p b{color:var(--tape)}
+.dial input{-webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:10px;background:linear-gradient(90deg,var(--tape) var(--p,0%),#34373b var(--p,0%));outline-offset:8px;margin-top:16px;cursor:grab}
+.dial input::-webkit-slider-thumb{-webkit-appearance:none;width:34px;height:34px;border-radius:50%;background:var(--paper);border:8px solid var(--tape);box-shadow:0 6px 18px rgba(0,0,0,.5);transition:transform .2s var(--spring)}
+.dial input::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--paper);border:8px solid var(--tape)}
+.dial input:active::-webkit-slider-thumb{transform:scale(1.2)}
+.ticks{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#8d9093;margin-top:8px}
+@media(max-width:720px){.tm-grid{grid-template-columns:1fr}.dial{grid-template-columns:1fr}}
+
+/* services: expanding panels */
+.panels{display:flex;gap:10px;margin-top:clamp(36px,5vw,64px);height:clamp(460px,58vw,640px)}
+.pn{position:relative;flex:1;min-width:0;border-radius:28px;overflow:hidden;cursor:pointer;isolation:isolate;transition:flex 0.8s var(--ease);background:var(--ink);color:var(--paper);border:0;padding:0;text-align:left}
+.pn.on{flex:4.2;cursor:default}
+.pn img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease),filter .6s;filter:grayscale(.7) brightness(.7)}
+.pn.on img{filter:none;transform:scale(1.04)}
+.pn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(21,23,26,.92),rgba(21,23,26,0) 62%)}
+.pn .v{position:absolute;left:50%;bottom:26px;transform:translateX(-50%) rotate(180deg);writing-mode:vertical-rl;white-space:nowrap;font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.02em;transition:opacity .3s}
+.pn.on .v{opacity:0}
+.pn .no{position:absolute;left:18px;top:18px;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--paper);color:var(--ink);font-family:var(--display);font-weight:800;font-size:16px;transition:background .3s}
+.pn.on .no{background:var(--tape)}
+.pn .body{position:absolute;left:0;right:0;bottom:0;padding:clamp(20px,2.6vw,34px);width:min(100%,560px);opacity:0;transform:translateY(24px);transition:opacity .4s,transform .6s var(--ease);pointer-events:none}
+.pn.on .body{opacity:1;transform:none;transition-delay:.3s;pointer-events:auto}
+.pn h3{font-size:clamp(24px,2.8vw,38px)}
+.pn p{margin-top:10px;color:#d6d8da;font-size:16.5px}
+.pn .chips{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 18px}
+.pn .chips span{font-size:13.5px;font-weight:600;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.14);backdrop-filter:blur(6px)}
+.pn .btn{min-height:48px;font-size:15.5px;padding:0 22px}
+@media(max-width:860px){.panels{flex-direction:column;height:auto}.pn{flex:none;height:76px}.pn.on{flex:none;height:500px}.pn .v{writing-mode:horizontal-tb;transform:none;left:76px;bottom:auto;top:22px}.pn{transition:height .7s var(--ease)}}
+
+/* process */
+.proc{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,6vw,90px);align-items:start;margin-top:clamp(36px,5vw,64px)}
+.proc-pic{position:sticky;top:110px;border-radius:999px 999px 28px 28px;overflow:hidden;aspect-ratio:4/5}
+.proc-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .7s var(--ease),transform 1.4s var(--ease)}
+.proc-pic img.on{opacity:1;transform:none}
+.steps{position:relative;display:grid;gap:clamp(30px,5vw,60px);padding-left:64px}
+.steps::before,.fill{content:"";position:absolute;left:21px;top:10px;bottom:10px;width:3px;border-radius:3px;background:var(--slab-2)}
+.fill{background:var(--sky);transform-origin:top;transform:scaleY(0);will-change:transform}
+.step{position:relative;opacity:.38;transition:opacity .5s}
+.step.on{opacity:1}
+.step .dot{position:absolute;left:-64px;top:0;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--slab);box-shadow:inset 0 0 0 3px var(--slab-2);font-family:var(--display);font-weight:800;font-size:18px;transition:background .4s,color .4s,box-shadow .4s,transform .5s var(--spring)}
+.step.on .dot{background:var(--sky);color:#fff;box-shadow:0 0 0 6px rgba(28,116,201,.2);transform:scale(1.08)}
+.step h3{font-size:clamp(22px,2.5vw,32px)}
+.step p{color:var(--ink-2);margin-top:10px;max-width:46ch}
+.step .when{display:inline-block;margin-top:12px;font-size:14px;font-weight:700;padding:6px 12px;border-radius:99px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line)}
+@media(max-width:860px){.proc{grid-template-columns:1fr}.proc-pic{position:relative;top:0;aspect-ratio:4/3.4;border-radius:999px 999px 24px 24px}}
+
+/* reel */
+.reels{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:clamp(36px,5vw,60px)}
+.rl{position:relative;border-radius:999px 999px 24px 24px;overflow:hidden;aspect-ratio:9/15;background:#000;border:0;padding:0;cursor:default;color:#fff;transition:transform .5s var(--spring)}
+.rl:nth-child(even){margin-top:40px}
+.rl:hover{transform:translateY(-10px)}
+.rl video{width:100%;height:100%;object-fit:cover}
+.rl::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 45%);transition:opacity .4s;pointer-events:none}
+.rl .cap{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;text-align:left;font-family:var(--display);font-weight:700;font-size:19px;line-height:1.1;pointer-events:none}
+.rl .cap small{display:block;font-family:var(--body);font-weight:500;font-size:13.5px;opacity:.8;margin-top:4px}
+.rl .pl{position:absolute;left:50%;top:54%;z-index:2;width:66px;height:66px;margin:-33px;border-radius:50%;background:var(--tape);color:var(--ink);display:grid;place-items:center;transition:transform .4s var(--spring),opacity .3s;pointer-events:none}
+.rl .pl svg{width:22px;height:22px;margin-left:3px}
+.rl.playing .pl{opacity:0;transform:scale(.4)}
+@media(max-width:860px){.reels{grid-template-columns:1fr 1fr}.rl:nth-child(even){margin-top:28px}}
+
+/* calculator */
+.blue{background:var(--sky);color:#fff;border-radius:44px;margin-inline:clamp(8px,1.4vw,20px);overflow:hidden}
+.blue .h2 em{color:var(--tape)}
+.blue .lede{color:#dcecfb}
+.blue .tag{color:#fff}
+.calc{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(20px,4vw,56px);margin-top:clamp(32px,4vw,56px);align-items:stretch}
+.cbox{background:rgba(255,255,255,.12);border-radius:28px;padding:clamp(20px,3vw,36px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22);min-width:0}
+.cbox h3{font-size:22px;margin-bottom:14px}
+.cbox h3+.kinds{margin-bottom:26px}
+.kinds{display:flex;flex-wrap:wrap;gap:8px}
+.kinds label{position:relative;cursor:pointer}
+.kinds input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.kinds span{display:block;padding:11px 18px;border-radius:99px;font-weight:600;font-size:15.5px;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5);transition:background .25s,color .25s,transform .3s var(--spring)}
+.kinds label:hover span{transform:translateY(-2px)}
+.kinds input:checked+span{background:#fff;color:var(--sky-2);box-shadow:none}
+.kinds input:focus-visible+span{outline:3px solid var(--tape);outline-offset:2px}
+.sl{margin-bottom:22px}
+.sl label{display:flex;justify-content:space-between;align-items:baseline;font-weight:600;font-size:15.5px;margin-bottom:10px}
+.sl output{font-family:var(--display);font-weight:800;font-size:26px;font-variant-numeric:tabular-nums}
+.sl input{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:8px;background:linear-gradient(90deg,var(--tape) var(--p,50%),rgba(255,255,255,.28) var(--p,50%));cursor:grab}
+.sl input::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:#fff;border:7px solid var(--tape);box-shadow:0 6px 16px rgba(0,0,0,.3);transition:transform .2s var(--spring)}
+.sl input::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#fff;border:7px solid var(--tape)}
+.sl input:active::-webkit-slider-thumb{transform:scale(1.2)}
+.out{background:var(--paper);color:var(--ink);border-radius:28px;padding:clamp(20px,3vw,36px);display:flex;flex-direction:column;gap:16px;min-width:0}
+.plan{position:relative;flex:1;min-height:190px;border-radius:18px;background:var(--slab-2);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:20px 20px;display:grid;place-items:center;overflow:hidden}
+.plan b{display:grid;place-items:center;background:var(--wet);box-shadow:inset 0 0 0 3px var(--wet-2),0 16px 30px -16px rgba(21,23,26,.6);border-radius:6px;transition:width .5s var(--spring),height .5s var(--spring);font-family:var(--display);font-weight:800;font-size:clamp(16px,2vw,22px);color:#fff;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.nums div{background:var(--slab);border-radius:16px;padding:14px;min-width:0}
+.nums strong{display:block;font-family:var(--display);font-weight:800;font-size:clamp(24px,3vw,38px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.nums span{font-size:13.5px;color:var(--ink-2);font-weight:500}
+.out .note{font-size:15px;color:var(--ink-2)}
+.out .note b{color:var(--ink)}
+.out .btn{width:100%}
+@media(max-width:900px){.calc{grid-template-columns:1fr}}
+
+/* wet cement */
+.cement{position:relative;margin-top:clamp(32px,4vw,56px);border-radius:32px;overflow:hidden;box-shadow:inset 0 0 0 10px #6b5a3a,0 40px 70px -40px rgba(21,23,26,.7);background:var(--wet);touch-action:none;cursor:crosshair}
+.cement canvas{width:100%;height:clamp(300px,42vw,480px)}
+.cement .tools{position:absolute;right:22px;top:22px;display:flex;gap:8px}
+.cement .tools button{border:0;border-radius:99px;padding:11px 18px;font-weight:700;font-size:14.5px;background:var(--ink);color:var(--paper);cursor:pointer;transition:transform .3s var(--spring),background .25s}
+.cement .tools button:hover{transform:translateY(-2px);background:var(--sky)}
+.cement .hint{position:absolute;left:26px;bottom:22px;font-weight:600;font-size:14.5px;color:rgba(21,23,26,.6);pointer-events:none;transition:opacity .4s}
+.cement.used .hint{opacity:0}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,90px);align-items:center}
+.collage{position:relative;aspect-ratio:1/1.08}
+.collage figure{position:absolute;margin:0;overflow:hidden;will-change:transform}
+.collage .c1{left:0;top:0;width:62%;height:74%;border-radius:999px 999px 24px 24px}
+.collage .c2{right:0;bottom:0;width:52%;height:60%;border-radius:24px;box-shadow:0 0 0 10px var(--slab)}
+.collage img{width:100%;height:100%;object-fit:cover}
+.collage .yr99{position:absolute;right:6%;top:6%;font-family:var(--display);font-weight:800;font-size:clamp(60px,9vw,130px);line-height:.8;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:2px var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:30px}
+.facts div{background:var(--paper);border-radius:20px;padding:20px;min-width:0}
+.facts strong{display:block;font-family:var(--display);font-weight:800;font-size:clamp(34px,4.4vw,58px);line-height:1;letter-spacing:-.04em;color:var(--sky);font-variant-numeric:tabular-nums}
+.facts div>span{font-size:14.5px;color:var(--ink-2);font-weight:500}
+@media(max-width:860px){.about{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:480px){.facts{grid-template-columns:1fr}}
+
+/* faq */
+.faq{display:grid;gap:10px;margin-top:clamp(30px,4vw,50px);max-width:900px}
+.qa{background:var(--paper);border-radius:22px;box-shadow:inset 0 0 0 1px var(--line);transition:background .3s,color .3s}
+.qa.open{background:var(--ink);color:var(--paper)}
+.qa button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;width:100%;justify-content:space-between;align-items:center;gap:18px;padding:22px 26px;font-family:var(--display);font-weight:700;font-size:clamp(19px,2.1vw,25px);letter-spacing:-.02em;line-height:1.15}
+.qa button:focus-visible{outline:3px solid var(--sky);outline-offset:-3px;border-radius:22px}
+.qa button i{position:relative;flex:none;width:38px;height:38px;border-radius:50%;background:var(--slab-2);transition:transform .5s var(--spring),background .3s}
+.qa button i::before,.qa button i::after{content:"";position:absolute;left:12px;right:12px;top:18px;height:2px;background:var(--ink);transition:transform .4s var(--ease)}
+.qa button i::after{transform:rotate(90deg)}
+.qa.open button i{background:var(--tape);transform:rotate(180deg)}
+.qa.open button i::after{transform:rotate(0)}
+.qa .a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.qa.open .a{grid-template-rows:1fr}
+.qa .a>div{overflow:hidden}
+.qa .a p{padding:0 26px 26px;max-width:64ch;color:#c4c6c9}
+
+/* final */
+.final{position:relative;background:var(--ink);color:var(--paper);border-radius:999px 999px 0 0 / 220px 220px 0 0;padding-top:clamp(110px,14vw,200px);text-align:center;overflow:hidden}
+.final h2{font-size:clamp(42px,7.6vw,120px);font-weight:800;line-height:.94;letter-spacing:-.05em;margin-inline:auto;max-width:11ch}
+.final h2 em{font-style:normal;color:var(--tape)}
+.final p{max-width:46ch;margin:26px auto 0;color:#b4b7ba;font-size:19px}
+.final .btn-row{justify-content:center;margin-top:34px}
+.final .num{display:inline-block;margin-top:38px;font-family:var(--display);font-weight:800;font-size:clamp(30px,5vw,70px);letter-spacing:-.04em;text-decoration:none;background:linear-gradient(var(--tape),var(--tape)) 0 100%/100% 5px no-repeat;transition:background-size .5s var(--ease),color .4s;padding:0 .1em}
+.final .num:hover{background-size:100% 100%;color:var(--ink)}
+footer{background:var(--ink);color:#9da0a3;font-size:15px;padding-block:70px 120px}
+footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;border-top:1px solid var(--line-w);padding-top:44px;text-align:left}
+footer img{height:84px;width:auto;filter:invert(1)}
+footer h4{margin:0 0 12px;font-size:14px;color:var(--paper)}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+footer a{text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--tape)}
+.legal{margin-top:36px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:13.5px}
+@media(max-width:760px){footer .cols{grid-template-columns:1fr}}
+@media(min-width:761px){footer{padding-bottom:50px}}
+
+.bar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:70;display:none;grid-template-columns:1fr 1.25fr;gap:6px;padding:6px;border-radius:999px;background:rgba(21,23,26,.9);backdrop-filter:blur(14px);box-shadow:0 20px 40px -12px rgba(0,0,0,.6);transform:translateY(160%);transition:transform .6s var(--spring)}
+.bar.show{transform:none}
+.bar .btn{min-height:50px;padding:0 12px;font-size:15.5px}
+.bar .btn-o{color:var(--paper)}
+@media(max-width:760px){.bar{display:grid}}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+  .split.pre .w>i,.fade.pre{transform:none;opacity:1}
+  .screed.pre>img,.screed.pre>video{clip-path:none;transform:none}
+  .bar{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="hdr">
+  <div class="in">
+    <a class="logo" href="#top" aria-label="Canfield Construction home"><img src="assets/logo.png" alt="Canfield Construction, established 1999" width="307" height="238"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#why">Why it matters</a>
+      <a href="#work">What we pour</a>
+      <a href="#process">How it goes</a>
+      <a href="#calc">Size my slab</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="top-r">
+      <a class="top-num" href="tel:+18015550199">(801) 555-0199</a>
+      <a class="btn btn-y" href="#calc">Free estimate</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <span class="tag" style="animation:rise .8s var(--ease) both">Concrete contractor. Family crew. Est. 1999.</span>
+      <h1><span class="ln"><span>Poured once.</span></span><span class="ln"><span>Poured right.</span></span><span class="ln"><span class="sk">Flat for</span></span><span class="ln"><span class="sk">decades.</span></span></h1>
+      <p class="hero-sub">Driveways, patios, shop slabs and curb and gutter from a crew that has been placing concrete since 1999. You get a straight answer, a written price and a slab you never have to think about again.</p>
+      <div class="btn-row">
+        <a class="btn btn-y" href="#calc">Get my free estimate<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+        <a class="btn btn-o" href="tel:+18015550199">Call (801) 555-0199</a>
+      </div>
+      <ul class="assure">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l5 5L19 7"/></svg>Free on-site estimates</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l5 5L19 7"/></svg>Licensed and insured</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l5 5L19 7"/></svg>27 years on the tools</li>
+      </ul>
+    </div>
+    <div class="arches">
+      <div class="arch a" data-par=".06"><video id="heroVid" muted loop playsinline preload="metadata" poster="assets/pour.jpg"><source src="assets/hero.mp4" type="video/mp4"></video></div>
+      <div class="arch b" data-par="-.05"><img src="assets/float.jpg" alt="Bull float resting on a freshly finished slab"></div>
+      <div class="arch c" data-par="-.1"><img src="assets/curbline.jpg" alt="Crew member finishing a fresh run of curb and gutter"></div>
+      <div class="seal" aria-hidden="true">
+        <svg viewBox="0 0 100 100"><defs><path id="circ" d="M50 50m-41 0a41 41 0 1 1 82 0a41 41 0 1 1-82 0"/></defs><text font-family="Plus Jakarta Sans,Arial,sans-serif" font-size="9.4" font-weight="700" letter-spacing="1.6" fill="#15171a"><textPath href="#circ">FREE ESTIMATES · POURING SINCE · FREE ESTIMATES · POURING SINCE ·</textPath></text></svg>
+        <b>1999</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tick" aria-hidden="true"><div>
+  <span>Driveways</span><span>Patios</span><span>Pool decks</span><span>Shop slabs</span><span>RV pads</span><span>Curb and gutter</span><span>Sidewalks</span><span>Tear-out and replace</span>
+  <span>Driveways</span><span>Patios</span><span>Pool decks</span><span>Shop slabs</span><span>RV pads</span><span>Curb and gutter</span><span>Sidewalks</span><span>Tear-out and replace</span>
+</div></div>
+
+<section class="sec" id="why">
+  <div class="wrap">
+    <span class="tag">Why who pours it matters</span>
+    <h2 class="h2 split">Bad concrete looks great on day one.</h2>
+    <p class="lede fade">Every slab looks perfect the afternoon it's poured. The shortcuts show up later: after a few winters, a few hundred freeze and thaw cycles and a truck in the driveway. Drag the slider and watch two pours age.</p>
+
+    <div class="tm fade" id="tm">
+      <div class="tm-grid">
+        <div class="pad bad">
+          <h3>The low-bid pour <small>CHEAPEST QUOTE</small></h3>
+          <svg viewBox="0 0 300 200" role="img" aria-label="A driveway slab that cracks, sinks and flakes over ten years">
+            <rect width="300" height="200" fill="#6f7a52"/>
+            <rect x="18" y="14" width="264" height="172" rx="4" fill="#b9b2a2"/>
+            <g id="sink"><path d="M150 14h132v86H150z" fill="#aaa391"/></g>
+            <path class="crack" id="k1" d="M18 70l34 8 22-10 30 18 26-6 20 14" stroke-width="2.2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+            <path class="crack" id="k2" d="M150 94l14 22-8 20 18 24-6 26" stroke-width="2.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+            <path class="crack" id="k3" d="M282 122l-30 6-18-12-28 14-22-4" stroke-width="2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+            <path class="crack" id="k4" d="M74 68l-8 30 14 26-10 30 6 32M206 130l8 24-6 32" stroke-width="1.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+            <g id="spall" fill="#8a8371" opacity="0"><ellipse cx="60" cy="140" rx="16" ry="9"/><ellipse cx="230" cy="52" rx="20" ry="10"/><ellipse cx="118" cy="38" rx="12" ry="7"/><ellipse cx="246" cy="166" rx="14" ry="8"/><ellipse cx="100" cy="166" rx="9" ry="5"/></g>
+            <g id="weeds" stroke="#3f6b2b" stroke-width="2.4" stroke-linecap="round" fill="none" opacity="0"><path d="M104 86l-3-9M104 86l3-10M104 86l0-12M168 138l-4-9M168 138l3-10M222 124l-3-9M222 124l4-9M70 124l-4-8M70 124l3-10"/></g>
+          </svg>
+          <ul><li>Poured on dirt, no compacted base</li><li>Thin slab, no steel</li><li>Extra water added so it finishes faster</li><li>No control joints, so it cracks where it wants</li></ul>
+        </div>
+        <div class="pad good">
+          <h3>A Canfield pour <small>DONE RIGHT</small></h3>
+          <svg viewBox="0 0 300 200" role="img" aria-label="A driveway slab with clean control joints that stays flat over ten years">
+            <rect width="300" height="200" fill="#6f7a52"/>
+            <rect x="18" y="14" width="264" height="172" rx="4" fill="#c4bdad"/>
+            <g stroke="#9c9584" stroke-width="2"><path d="M106 14v172M194 14v172M18 100h264"/></g>
+            <rect x="18" y="14" width="264" height="172" rx="4" fill="none" stroke="#a9a291" stroke-width="3"/>
+            <g id="shine" opacity=".0"><path d="M30 26l60 0-50 60z" fill="#fff" opacity=".18"/></g>
+            <g id="car" opacity="0"><rect x="118" y="46" width="64" height="108" rx="14" fill="#1c74c9"/><rect x="126" y="66" width="48" height="26" rx="6" fill="#9fd0ff"/><rect x="126" y="118" width="48" height="18" rx="5" fill="#9fd0ff"/></g>
+          </svg>
+          <ul><li>Graded and compacted gravel base</li><li>Full thickness with steel where it counts</li><li>The right mix for freeze and thaw</li><li>Joints placed so it moves where we planned</li></ul>
+        </div>
+      </div>
+      <div class="dial">
+        <div class="yr"><small>Years after pour day</small><span id="yrNum">0</span></div>
+        <div>
+          <p id="yrTxt">Pour day. <b>Both look identical.</b> This is the only day most people compare them.</p>
+          <input type="range" id="yrRange" min="0" max="10" step="0.05" value="0" aria-label="Years after pour day">
+          <div class="ticks"><span>Day 1</span><span>Year 3</span><span>Year 5</span><span>Year 8</span><span>Year 10</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-row fade" style="margin-top:30px">
+      <a class="btn btn-y" href="#calc">Get it poured right<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+      <a class="btn btn-o" href="tel:+18015550199">Talk to the crew</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="work" style="padding-top:0">
+  <div class="wrap">
+    <span class="tag">What we pour</span>
+    <h2 class="h2 split">If it's flat, gray and needs to last, we do it.</h2>
+    <div class="panels" id="panels">
+      <button class="pn on" type="button"><img src="assets/driveway.jpg" alt="New concrete driveway and sidewalk in front of a brick home" loading="lazy"><span class="no">1</span><span class="v">Driveways</span>
+        <span class="body"><h3>Driveways</h3><p>New pours and full tear-out and replace. Wide enough for the truck, strong enough for the trailer, sloped so water runs away from the garage.</p><span class="chips"><span>Tear-out</span><span>Broom finish</span><span>Approaches</span><span>Extensions</span></span><a class="btn btn-y" href="#calc" data-kind="Driveway">Size my driveway</a></span></button>
+      <button class="pn" type="button"><img src="assets/aerial.jpg" alt="Crew pouring a large slab beside a garage, seen from above" loading="lazy"><span class="no">2</span><span class="v">Shop slabs and RV pads</span>
+        <span class="body"><h3>Shop slabs and RV pads</h3><p>Big flatwork for garages, shops, sheds and the camper that's been sitting on gravel. Thick where the weight sits and dead level where it matters.</p><span class="chips"><span>Garage floors</span><span>Shop floors</span><span>RV and boat pads</span><span>Shed pads</span></span><a class="btn btn-y" href="#calc" data-kind="Shop slab or RV pad">Size my slab</a></span></button>
+      <button class="pn" type="button"><img src="assets/pool.jpg" alt="Fresh concrete deck poured around a backyard pool" loading="lazy"><span class="no">3</span><span class="v">Patios and pool decks</span>
+        <span class="body"><h3>Patios and pool decks</h3><p>The part of the yard you'll actually use. Clean edges, the right slope for drainage and a finish that isn't slick when it's wet.</p><span class="chips"><span>Back patios</span><span>Pool decks</span><span>Hot tub pads</span><span>Walkways</span></span><a class="btn btn-y" href="#calc" data-kind="Patio or pool deck">Size my patio</a></span></button>
+      <button class="pn" type="button"><img src="assets/curbcrew.jpg" alt="Crew running a curb machine and hand finishing a curved curb" loading="lazy"><span class="no">4</span><span class="v">Curb and gutter</span>
+        <span class="body"><h3>Curb and gutter</h3><p>Machine-placed curb for subdivisions, streets and parking lots. Our curb machine lays it fast and our finishers follow right behind, so every foot is true to line and grade.</p><span class="chips"><span>Subdivisions</span><span>Parking lots</span><span>Radius work</span><span>Developers and GCs</span></span><a class="btn btn-y" href="tel:+18015550199">Call about a bid</a></span></button>
+      <button class="pn" type="button"><img src="assets/screed.jpg" alt="Finisher running a power screed across a fresh slab with mountains behind" loading="lazy"><span class="no">5</span><span class="v">Sidewalks and flatwork</span>
+        <span class="body"><h3>Sidewalks and flatwork</h3><p>Sidewalks, steps, approaches and anything else that needs to be flat and stay that way. Residential and commercial.</p><span class="chips"><span>Sidewalks</span><span>Steps</span><span>Commercial flatwork</span><span>Repairs</span></span><a class="btn btn-y" href="#calc" data-kind="Sidewalk or flatwork">Size my project</a></span></button>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="process" style="background:var(--paper)">
+  <div class="wrap">
+    <span class="tag">How it goes</span>
+    <h2 class="h2 split">From first call to first cookout.</h2>
+    <div class="proc">
+      <div class="proc-pic" id="procPic">
+        <img class="on" src="assets/driveway.jpg" alt="Finished driveway" loading="lazy">
+        <img src="assets/hammer.jpg" alt="Crew member setting forms with a sledgehammer" loading="lazy">
+        <img src="assets/aerial.jpg" alt="Concrete truck pouring a slab while the crew rakes and screeds" loading="lazy">
+        <img src="assets/float.jpg" alt="Bull float smoothing fresh concrete" loading="lazy">
+        <img src="assets/finisher.jpg" alt="Finisher working the edge of a fresh pour" loading="lazy">
+      </div>
+      <div class="steps" id="steps">
+        <span class="fill" id="fill"></span>
+        <div class="step on"><span class="dot">1</span><h3>We come look at it</h3><p>We walk the site, measure it and ask how you'll use it. You get a written price with everything on it. No pressure and no mystery line items.</p><span class="when">Free. Takes about 20 minutes.</span></div>
+        <div class="step"><span class="dot">2</span><h3>Prep is the whole job</h3><p>Old concrete out. Ground graded and compacted. Forms set to line and grade, steel in. This is the part nobody sees and the part that decides if it cracks.</p><span class="when">Where the cheap bids save their money.</span></div>
+        <div class="step"><span class="dot">3</span><h3>Pour day</h3><p>Truck shows up, crew's already there. We place it, screed it and work it while it's ready, not when it's convenient.</p><span class="when">Usually one morning.</span></div>
+        <div class="step"><span class="dot">4</span><h3>Finish and joints</h3><p>Floated, edged and broomed for grip. Control joints go in on time so the slab moves where we planned, not where it feels like.</p><span class="when">The part you'll look at for 30 years.</span></div>
+        <div class="step"><span class="dot">5</span><h3>Clean up and walk-through</h3><p>Forms pulled, yard cleaned up, and we tell you exactly when you can walk on it, park on it and roll the grill out.</p><span class="when">We leave it cleaner than we found it.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="reel">
+  <div class="wrap">
+    <span class="tag">On the job</span>
+    <h2 class="h2 split">Don't take our word for it. Watch us work.</h2>
+    <p class="lede fade">No stock footage. This is our crew, our trucks and our concrete. </p>
+    <div class="reels">
+      <button class="rl screed" type="button" tabindex="-1"><video muted loop playsinline autoplay preload="metadata" poster="assets/pour.jpg"><source src="assets/pour.mp4" type="video/mp4"></video><span class="cap">Pour day<small>Shop slab, start to screed</small></span></button>
+      <button class="rl screed" type="button" tabindex="-1"><video muted loop playsinline autoplay preload="metadata" poster="assets/curb.jpg"><source src="assets/curb.mp4" type="video/mp4"></video><span class="cap">Curb machine<small>Laying curb on a new street</small></span></button>
+      <button class="rl screed" type="button" tabindex="-1"><video muted loop playsinline autoplay preload="metadata" poster="assets/pool.jpg"><source src="assets/pool.mp4" type="video/mp4"></video><span class="cap">Pool deck<small>Fresh off the trowel</small></span></button>
+      <button class="rl screed" type="button" tabindex="-1"><video muted loop playsinline autoplay preload="metadata" poster="assets/edge.jpg"><source src="assets/edge.mp4" type="video/mp4"></video><span class="cap">Curb and gutter<small>Hand finished behind the machine</small></span></button>
+    </div>
+  </div>
+</section>
+
+<div style="background:var(--ink);padding-bottom:clamp(8px,1.4vw,20px)">
+<section class="sec blue" id="calc">
+  <div class="wrap">
+    <span class="tag">Size my slab</span>
+    <h2 class="h2 split">How much concrete is that, anyway?</h2>
+    <p class="lede fade">Slide to your rough size and see the square footage and the yards of concrete it takes. Then send us the numbers and we'll come give you a real, written price.</p>
+    <form class="calc" id="calcForm" novalidate>
+      <div class="cbox">
+        <h3>What are we pouring?</h3>
+        <div class="kinds">
+          <label><input type="radio" name="kind" value="Driveway" id="k_d" checked><span>Driveway</span></label>
+          <label><input type="radio" name="kind" value="Patio or pool deck" id="k_p"><span>Patio or pool deck</span></label>
+          <label><input type="radio" name="kind" value="Shop slab or RV pad" id="k_s"><span>Shop slab or RV pad</span></label>
+          <label><input type="radio" name="kind" value="Sidewalk or flatwork" id="k_w"><span>Sidewalk or flatwork</span></label>
+        </div>
+        <div class="sl"><label for="len">Length <output id="lenO">40 ft</output></label><input type="range" id="len" min="4" max="120" value="40"></div>
+        <div class="sl"><label for="wid">Width <output id="widO">20 ft</output></label><input type="range" id="wid" min="3" max="80" value="20"></div>
+        <h3>How thick?</h3>
+        <div class="kinds" style="margin-bottom:0">
+          <label><input type="radio" name="thick" value="4" id="t4" checked><span>4 in / cars and foot traffic</span></label>
+          <label><input type="radio" name="thick" value="5" id="t5"><span>5 in / trucks and trailers</span></label>
+          <label><input type="radio" name="thick" value="6" id="t6"><span>6 in / RVs and heavy loads</span></label>
+        </div>
+      </div>
+      <div class="out" aria-live="polite">
+        <div class="plan" aria-hidden="true"><b id="planB">40 x 20</b></div>
+        <div class="nums">
+          <div><strong id="nSq">800</strong><span>square feet</span></div>
+          <div><strong id="nYd">9.9</strong><span>cubic yards</span></div>
+          <div><strong id="nBag">445</strong><span>80 lb bags, if you DIY</span></div>
+        </div>
+        <p class="note" id="calcNote"><b>That's about one full truck.</b> Or 445 bags you'd be mixing by hand. Let us handle it.</p>
+        <a class="btn btn-y" id="calcSms" href="sms:+18015550199">Text us these numbers<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+        <a class="btn btn-o" href="tel:+18015550199">Or call (801) 555-0199</a>
+      </div>
+    </form>
+  </div>
+</section>
+</div>
+
+<section class="sec" id="initials">
+  <div class="wrap">
+    <span class="tag">Go ahead, everybody wants to</span>
+    <h2 class="h2 split">Put your initials in it.</h2>
+    <p class="lede fade">Fresh concrete is the one thing nobody can resist. Drag your finger or mouse across the slab. When you're done, we'll float it smooth and pour you a real one.</p>
+    <div class="cement fade" id="cement">
+      <canvas id="cv" width="1200" height="480" aria-label="Wet concrete you can draw in"></canvas>
+      <div class="tools"><button type="button" id="floatBtn">Float it smooth</button></div>
+      <span class="hint">Draw here</span>
+    </div>
+    <div class="btn-row" style="margin-top:28px">
+      <a class="btn btn-y" href="#calc">Now pour me the real thing<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="about" style="padding-top:0">
+  <div class="wrap about">
+    <div class="collage">
+      <figure class="c1 screed" data-par=".05"><img src="assets/hammer.jpg" alt="Crew member driving form stakes with a sledgehammer" loading="lazy"></figure>
+      <figure class="c2 screed" data-par="-.07"><img src="assets/finisher.jpg" alt="Finisher working a fresh pour with a long handled float" loading="lazy"></figure>
+      <span class="yr99" aria-hidden="true">'99</span>
+    </div>
+    <div>
+      <span class="tag">Est. 1999</span>
+      <h2 class="h2 split">Same name on the truck for 27 years.</h2>
+      <p class="lede fade">Fly-by-night crews change their name every time the callbacks pile up. Canfield Construction has been pouring under the same name since 1999, because we still drive past our own work every day.</p>
+      <p class="lede fade">When you call, you talk to the people who'll be standing in your driveway on pour day. That's the whole pitch.</p>
+      <div class="facts">
+        <div class="fade"><strong><span data-count="1999">1999</span></strong><span>The year we started</span></div>
+        <div class="fade" style="--d:90ms"><strong><span data-count="27">27</span></strong><span>Years of pours behind us</span></div>
+        <div class="fade" style="--d:180ms"><strong><span data-count="1">1</span></strong><span>Crew, start to finish</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq" style="background:var(--paper)">
+  <div class="wrap">
+    <span class="tag">Straight answers</span>
+    <h2 class="h2 split">Questions we get on every estimate.</h2>
+    <div class="faq" id="faqList">
+      <div class="qa open"><button type="button" aria-expanded="true">How soon can I drive on it?<i></i></button><div class="a"><div><p>Plan on walking on it after a day or two and parking a car on it after about a week. Concrete keeps gaining strength for about a month, so hold off on the heavy stuff like a loaded trailer or the RV until then. We'll give you exact dates for your pour.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Will it crack?<i></i></button><div class="a"><div><p>All concrete moves. The job is controlling where. A compacted base, steel and joints placed at the right spacing mean any cracking happens down in the joint lines, where you'll never notice it.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Do you tear out the old concrete?<i></i></button><div class="a"><div><p>Yes. We break it out, haul it off and fix whatever was underneath that made it fail in the first place. Tear-out is priced right in your estimate.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">What does a new driveway cost?<i></i></button><div class="a"><div><p>It depends on size, thickness, tear-out and access, which is why we look at it in person instead of guessing over the phone. The estimate is free and it's in writing.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Can you pour in cold weather?<i></i></button><div class="a"><div><p>Often, yes, with the right mix and blankets to protect it while it cures. Some days it's smarter to wait, and we'll tell you so instead of risking your slab.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Do you work for builders and developers?<i></i></button><div class="a"><div><p>Yes. We run our own curb machine for subdivisions, streets and parking lots, and we pour flatwork for builders and general contractors. Call us about your plans.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2 class="split">Let's get it <em>poured.</em></h2>
+    <p class="fade">Tell us what you're thinking. We'll come out, measure it and hand you a written price. Free, and usually within the week.</p>
+    <div class="btn-row">
+      <a class="btn btn-y" href="#calc">Get my free estimate<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+    </div>
+    <a class="num" href="tel:+18015550199">(801) 555-0199</a>
+  </div>
+  <footer>
+    <div class="wrap">
+      <div class="cols">
+        <div><img src="assets/logo.png" alt="Canfield Construction" width="307" height="238" loading="lazy"><p style="max-width:34ch;margin-top:14px">Concrete done right since 1999. Driveways, patios, slabs and curb and gutter.</p></div>
+        <div><h4>We pour</h4><ul><li>Driveways</li><li>Patios and pool decks</li><li>Shop slabs and RV pads</li><li>Curb and gutter</li><li>Sidewalks and flatwork</li></ul></div>
+        <div><h4>Get in touch</h4><ul><li><a href="tel:+18015550199">(801) 555-0199</a></li><li>Free on-site estimates</li><li><a href="https://www.instagram.com/canfield_concrete/" target="_blank" rel="noopener">Instagram @canfield_concrete</a></li></ul></div>
+      </div>
+      <div class="legal"><span>© 2026 Canfield Construction. Est. 1999.</span><span>Website concept by <a href="https://magolabs.in" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px">Mago Labs</a></span></div>
+    </div>
+  </footer>
+</section>
+</main>
+
+<nav class="bar" id="bar" aria-label="Quick contact">
+  <a class="btn btn-o" href="tel:+18015550199">Call</a>
+  <a class="btn btn-y" href="#calc">Free estimate</a>
+</nav>
+
+<script>
+(function(){
+'use strict';
+var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var $$ = function(s, r){ return [].slice.call((r || document).querySelectorAll(s)); };
+var clamp = function(v, a, b){ return Math.min(Math.max(v, a), b); };
+var easeOut = function(t){ return 1 - Math.pow(1 - t, 3); };
+var PHONE = '+18015550199';
+
+/* hero video */
+var hv = $('#heroVid'); if (hv && !REDUCED) { var hp = hv.play(); if (hp && hp.catch) hp.catch(function(){}); }
+
+/* ripple */
+if (!REDUCED) document.addEventListener('pointerdown', function(e){
+  var el = e.target.closest('.btn'); if (!el) return;
+  var r = el.getBoundingClientRect(), d = document.createElement('span');
+  d.className = 'rip'; d.style.left = (e.clientX - r.left) + 'px'; d.style.top = (e.clientY - r.top) + 'px';
+  el.appendChild(d); setTimeout(function(){ d.remove(); }, 700);
+}, {passive:true});
+
+/* word split */
+$$('.split').forEach(function(h){
+  var i = 0;
+  (function walk(node){
+    [].slice.call(node.childNodes).forEach(function(n){
+      if (n.nodeType === 3) {
+        var f = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function(p){
+          if (!p) return;
+          if (/^\s+$/.test(p)) { f.appendChild(document.createTextNode(' ')); return; }
+          var w = document.createElement('span'); w.className = 'w';
+          var s = document.createElement('i'); s.textContent = p; s.style.setProperty('--i', i++);
+          w.appendChild(s); f.appendChild(w);
+        });
+        node.replaceChild(f, n);
+      } else if (n.nodeType === 1) walk(n);
+    });
+  })(h);
+});
+
+/* reveals + count up */
+function countUp(el){
+  if (REDUCED) return;
+  var to = parseFloat(el.dataset.count), fin = el.textContent, from = to > 1000 ? to - 40 : 0, t0 = null;
+  requestAnimationFrame(function step(now){
+    if (t0 === null) t0 = now;
+    var k = Math.min(1, (now - t0) / 1500);
+    el.textContent = k < 1 ? Math.round(from + (to - from) * easeOut(k)) : fin;
+    if (k < 1) requestAnimationFrame(step);
+  });
+}
+var tmSeen = null;
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (!e.isIntersecting) return;
+      e.target.classList.remove('pre');
+      if (e.target.dataset.count) countUp(e.target);
+      if (e.target.id === 'tm' && tmSeen) tmSeen();
+      io.unobserve(e.target);
+    });
+  }, {rootMargin:'0px 0px -12% 0px'});
+  $$('.split,.fade,.screed').forEach(function(el){
+    if (!REDUCED && el.getBoundingClientRect().top > innerHeight * .9) el.classList.add('pre');
+    io.observe(el);
+  });
+  $$('[data-count]').forEach(function(el){ io.observe(el); });
+}
+
+/* scroll: header hide, parallax, process line, bar */
+var hdr = $('#hdr'), bar = $('#bar'), pars = $$('[data-par]'), steps = $$('#steps .step'), fill = $('#fill'), stepsBox = $('#steps'), pics = $$('#procPic img');
+var lastY = 0, ticking = false;
+function frame(){
+  ticking = false;
+  var y = scrollY, vh = innerHeight;
+  hdr.classList.toggle('hide', y > lastY && y > 500);
+  lastY = y;
+  bar.classList.toggle('show', y > vh * .6);
+  if (!REDUCED) pars.forEach(function(el){
+    var r = el.parentNode.getBoundingClientRect();
+    if (r.bottom < -100 || r.top > vh + 100) return;
+    el.style.transform = 'translate3d(0,' + ((r.top + r.height / 2 - vh / 2) * parseFloat(el.dataset.par)).toFixed(1) + 'px,0)';
+  });
+  var sr = stepsBox.getBoundingClientRect();
+  if (sr.top < vh && sr.bottom > 0) {
+    var p = clamp((vh * .55 - sr.top) / sr.height, 0, 1), cur = 0;
+    fill.style.transform = 'scaleY(' + p.toFixed(3) + ')';
+    steps.forEach(function(s, i){ var on = s.getBoundingClientRect().top < vh * .6; s.classList.toggle('on', on || i === 0); if (on) cur = i; });
+    pics.forEach(function(im, i){ im.classList.toggle('on', i === cur); });
+  }
+}
+addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, {passive:true});
+addEventListener('resize', frame);
+
+/* time machine */
+(function(){
+  var range = $('#yrRange'), num = $('#yrNum'), txt = $('#yrTxt');
+  var k = ['k1','k2','k3','k4'].map(function(id){ return $('#' + id); });
+  var sink = $('#sink'), spall = $('#spall'), weeds = $('#weeds'), car = $('#car');
+  var COPY = [
+    [0, 'Pour day. <b>Both look identical.</b> This is the only day most people compare them.'],
+    [1, 'First winter. Water gets under the low-bid slab and <b>a hairline crack shows up</b> right across the middle.'],
+    [3, 'Year three. <b>More cracks, and one corner starts to settle</b> because the dirt under it was never compacted.'],
+    [5, 'Year five. The surface is <b>flaking and pitting</b> from that watered-down mix. The lip catches your snow shovel.'],
+    [8, 'Year eight. Weeds in the cracks. <b>Quotes to tear it all out</b> and start over.'],
+    [10, 'Year ten. One of these driveways got poured twice. <b>The other one just has a truck parked on it.</b>']
+  ];
+  function seg(y, a, b){ return clamp((y - a) / (b - a), 0, 1); }
+  function render(y){
+    num.textContent = Math.round(y);
+    range.style.setProperty('--p', (y * 10) + '%');
+    k[0].setAttribute('stroke-dashoffset', 1 - seg(y, .4, 2));
+    k[1].setAttribute('stroke-dashoffset', 1 - seg(y, 1.6, 4));
+    k[2].setAttribute('stroke-dashoffset', 1 - seg(y, 2.6, 5.5));
+    k[3].setAttribute('stroke-dashoffset', 1 - seg(y, 5, 8.5));
+    var s = seg(y, 2.5, 7);
+    sink.setAttribute('transform', 'translate(' + (s * 3).toFixed(2) + ' ' + (s * 5).toFixed(2) + ')');
+    sink.style.filter = 'brightness(' + (1 - s * .14).toFixed(3) + ')';
+    spall.style.opacity = seg(y, 4, 7).toFixed(2);
+    weeds.style.opacity = seg(y, 6.5, 9).toFixed(2);
+    car.style.opacity = seg(y, 8.5, 10).toFixed(2);
+    var c = COPY[0]; COPY.forEach(function(x){ if (y >= x[0] - .3) c = x; });
+    if (txt.dataset.k !== String(c[0])) { txt.dataset.k = c[0]; txt.innerHTML = c[1]; }
+  }
+  var auto = 0;
+  range.addEventListener('input', function(){ if (auto) { cancelAnimationFrame(auto); auto = 0; } render(parseFloat(range.value)); });
+  render(0);
+  tmSeen = function(){
+    if (REDUCED) return;
+    var t0 = performance.now();
+    (function step(now){
+      var kk = Math.min(1, (now - t0) / 6500), y = 10 * (kk < .5 ? 2 * kk * kk : 1 - Math.pow(-2 * kk + 2, 2) / 2);
+      range.value = y; render(y);
+      auto = kk < 1 ? requestAnimationFrame(step) : 0;
+    })(t0);
+  };
+})();
+
+/* service panels */
+(function(){
+  var pn = $$('#panels .pn');
+  function pick(el){ pn.forEach(function(p){ p.classList.toggle('on', p === el); }); }
+  pn.forEach(function(p){
+    p.addEventListener('click', function(){ pick(p); });
+    if (matchMedia('(hover:hover) and (min-width:861px)').matches) p.addEventListener('mouseenter', function(){ pick(p); });
+  });
+})();
+
+/* reels: every clip plays by itself while it is on screen */
+(function(){
+  var vids = $$('.rl video');
+  function go(v){ var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+  if (REDUCED) { vids.forEach(function(v){ v.removeAttribute('autoplay'); v.pause(); }); return; }
+  if (!('IntersectionObserver' in window)) { vids.forEach(go); return; }
+  var vo = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) go(e.target); else e.target.pause(); }); }, {threshold:.15});
+  vids.forEach(function(v){ vo.observe(v); });
+})();
+
+/* calculator */
+(function(){
+  var f = $('#calcForm'), len = $('#len'), wid = $('#wid'), planB = $('#planB'), sms = $('#calcSms'), note = $('#calcNote');
+  var shown = {sq:800, yd:9.9, bag:445}, raf = 0;
+  function tween(target){
+    cancelAnimationFrame(raf);
+    var from = {sq:shown.sq, yd:shown.yd, bag:shown.bag}, t0 = performance.now();
+    (function step(now){
+      var k = REDUCED ? 1 : Math.min(1, (now - t0) / 500), e = easeOut(k);
+      shown.sq = from.sq + (target.sq - from.sq) * e; shown.yd = from.yd + (target.yd - from.yd) * e; shown.bag = from.bag + (target.bag - from.bag) * e;
+      $('#nSq').textContent = Math.round(shown.sq).toLocaleString('en-US');
+      $('#nYd').textContent = shown.yd.toFixed(1);
+      $('#nBag').textContent = Math.round(shown.bag).toLocaleString('en-US');
+      if (k < 1) raf = requestAnimationFrame(step);
+    })(t0);
+  }
+  function calc(){
+    var L = +len.value, W = +wid.value, T = +$('input[name="thick"]:checked', f).value, kind = $('input[name="kind"]:checked', f).value;
+    var sq = L * W, yd = sq * (T / 12) / 27, bag = yd * 45;
+    $('#lenO').textContent = L + ' ft'; $('#widO').textContent = W + ' ft';
+    len.style.setProperty('--p', ((L - 4) / 116 * 100) + '%'); wid.style.setProperty('--p', ((W - 3) / 77 * 100) + '%');
+    planB.style.width = clamp(L / 120 * 92, 16, 92) + '%'; planB.style.height = clamp(W / 80 * 86, 20, 86) + '%';
+    planB.textContent = L + ' x ' + W;
+    tween({sq:sq, yd:yd, bag:bag});
+    var trucks = yd / 10, t = trucks <= .6 ? 'That’s a short load.' : trucks <= 1.15 ? 'That’s about one full truck.' : 'That’s about ' + (Math.round(trucks * 2) / 2) + ' truckloads.';
+    note.innerHTML = '<b>' + t + '</b> Or ' + Math.round(bag).toLocaleString('en-US') + ' bags you’d be mixing by hand. Let us handle it.';
+    var msg = 'Hi Canfield, I’d like a free estimate.\nProject: ' + kind + '\nSize: about ' + L + ' x ' + W + ' ft (' + sq.toLocaleString('en-US') + ' sq ft)\nThickness: ' + T + ' in (about ' + yd.toFixed(1) + ' yards)\nMy address: ';
+    sms.href = 'sms:' + PHONE + '?&body=' + encodeURIComponent(msg);
+  }
+  f.addEventListener('input', calc); f.addEventListener('change', calc);
+  f.addEventListener('submit', function(e){ e.preventDefault(); });
+  $$('[data-kind]').forEach(function(a){ a.addEventListener('click', function(){ var r = $('input[name="kind"][value="' + a.dataset.kind + '"]', f); if (r) { r.checked = true; calc(); } }); });
+  calc();
+})();
+
+/* wet cement */
+(function(){
+  var box = $('#cement'), cv = $('#cv'), ctx = cv.getContext('2d'), base = document.createElement('canvas');
+  var W = cv.width, H = cv.height; base.width = W; base.height = H;
+  var b = base.getContext('2d');
+  b.fillStyle = '#a89d87'; b.fillRect(0, 0, W, H);
+  var img = b.getImageData(0, 0, W, H), d = img.data;
+  for (var i = 0; i < d.length; i += 4) { var n = (Math.random() - .5) * 22; d[i] += n; d[i + 1] += n; d[i + 2] += n; }
+  b.putImageData(img, 0, 0);
+  b.globalAlpha = .08; b.strokeStyle = '#fff'; b.lineWidth = 1;
+  for (var y = 6; y < H; y += 7) { b.beginPath(); b.moveTo(0, y + Math.random() * 2); b.lineTo(W, y + Math.random() * 2); b.stroke(); }
+  b.globalAlpha = 1;
+  ctx.drawImage(base, 0, 0);
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  function groove(x0, y0, x1, y1){
+    ctx.strokeStyle = 'rgba(255,255,255,.28)'; ctx.lineWidth = 17; ctx.beginPath(); ctx.moveTo(x0 + 3, y0 + 3); ctx.lineTo(x1 + 3, y1 + 3); ctx.stroke();
+    ctx.strokeStyle = 'rgba(58,48,34,.55)'; ctx.lineWidth = 13; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+    ctx.strokeStyle = 'rgba(40,32,22,.35)'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(x0 - 2, y0 - 2); ctx.lineTo(x1 - 2, y1 - 2); ctx.stroke();
+  }
+  /* starter doodle so the slab is never empty: a heart and '99 */
+  function doodle(){
+    var pts = [[150,170],[120,130],[150,105],[185,140],[220,105],[250,130],[220,170],[185,215],[150,170]];
+    for (var i = 1; i < pts.length; i++) groove(pts[i-1][0], pts[i-1][1], pts[i][0], pts[i][1]);
+    var nine = [[330,150],[300,125],[320,100],[350,120],[340,215]];
+    [0, 70].forEach(function(dx){ for (var j = 1; j < nine.length; j++) groove(nine[j-1][0] + dx, nine[j-1][1], nine[j][0] + dx, nine[j][1]); });
+    groove(290, 95, 284, 112);
+  }
+  doodle();
+  var last = null;
+  function pos(e){ var r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * W / r.width, (e.clientY - r.top) * H / r.height]; }
+  cv.addEventListener('pointerdown', function(e){ last = pos(e); box.classList.add('used'); try { cv.setPointerCapture(e.pointerId); } catch (err) {} groove(last[0], last[1], last[0] + .1, last[1] + .1); });
+  cv.addEventListener('pointermove', function(e){ if (!last) return; var p = pos(e); groove(last[0], last[1], p[0], p[1]); last = p; });
+  ['pointerup','pointercancel','pointerleave'].forEach(function(n){ cv.addEventListener(n, function(){ last = null; }); });
+  $('#floatBtn').addEventListener('click', function(){
+    if (REDUCED) { ctx.drawImage(base, 0, 0); return; }
+    var t0 = performance.now();
+    (function step(now){
+      var k = Math.min(1, (now - t0) / 1100), x = easeOut(k) * (W + 60);
+      ctx.drawImage(base, 0, 0, Math.min(W, x), H, 0, 0, Math.min(W, x), H);
+      if (k < 1) { ctx.fillStyle = '#d7dadd'; ctx.fillRect(x, 0, 14, H); ctx.fillStyle = 'rgba(21,23,26,.25)'; ctx.fillRect(x + 14, 0, 10, H); requestAnimationFrame(step); }
+      else ctx.drawImage(base, 0, 0);
+    })(t0);
+  });
+})();
+
+/* faq */
+$$('#faqList .qa').forEach(function(q){
+  $('button', q).addEventListener('click', function(){
+    var open = !q.classList.contains('open');
+    $$('#faqList .qa').forEach(function(o){ o.classList.remove('open'); $('button', o).setAttribute('aria-expanded', 'false'); });
+    if (open) { q.classList.add('open'); $('button', q).setAttribute('aria-expanded', 'true'); }
+  });
+});
+
+frame();
+})();
+</script>
+</body>
+</html>
